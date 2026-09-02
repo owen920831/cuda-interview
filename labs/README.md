@@ -4,14 +4,47 @@
 
 第一次使用请先做 `programming_model_lab.cu`；它覆盖 built-in indices、1D/2D mapping、tail guard、shared memory 与 block barrier，再进入 vector add。
 
+## Docker / NGC（推荐）
+
+WSL host 不需要安装 CMake 或 CUDA Toolkit；所有编译命令都透过已验证的 NGC container：
+
+```bash
+./scripts/docker.sh run cmake -S . -B build/labs -G Ninja \
+  -DCMAKE_BUILD_TYPE=Release \
+  -DCMAKE_CUDA_ARCHITECTURES=native \
+  -DCOURSE_BUILD_LABS=ON
+
+./scripts/docker.sh run cmake --build build/labs \
+  --target lab_programming_model
+
+./scripts/docker.sh run ./build/labs/lab_programming_model
+```
+
+Day 2 以后再逐题 build/run：
+
+```bash
+./scripts/docker.sh run cmake --build build/labs --target lab_vector_add
+./scripts/docker.sh run ./build/labs/lab_vector_add --version 0
+
+./scripts/docker.sh run cmake --build build/labs --target lab_reduce
+./scripts/docker.sh run ./build/labs/lab_reduce --version all
+```
+
+只有在所有 TODO 都完成后，才运行整个 student suite：
+
+```bash
+./scripts/docker.sh run ctest --test-dir build/labs --output-on-failure
+```
+
+## WSL host 原生工具链（可选）
+
+只有 `make setup` 已确认 host 具备 `nvcc`、CMake 与 Ninja 时，才直接执行：
+
 ```bash
 cmake -S . -B build/labs -G Ninja -DCMAKE_BUILD_TYPE=Release \
   -DCMAKE_CUDA_ARCHITECTURES=native -DCOURSE_BUILD_LABS=ON
-cmake --build build/labs -j
-
-./build/labs/lab_vector_add --version 0
-./build/labs/lab_reduce --version all
-ctest --test-dir build/labs --output-on-failure
+cmake --build build/labs --target lab_programming_model
+./build/labs/lab_programming_model
 ```
 
 每个 `TODO(student)` 都是一个 gate。允许新增 helper/kernel，不要删除 CPU reference 或把 reference result 直接 copy 到 output。
