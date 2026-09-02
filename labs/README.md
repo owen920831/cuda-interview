@@ -2,6 +2,8 @@
 
 这里故意没有实现。`src/` 是 reference，`labs/` 是你必须亲手完成、由同一套 CPU reference 验收的版本。
 
+第一次使用请先做 `programming_model_lab.cu`；它覆盖 built-in indices、1D/2D mapping、tail guard、shared memory 与 block barrier，再进入 vector add。
+
 ```bash
 cmake -S . -B build/labs -G Ninja -DCMAKE_BUILD_TYPE=Release \
   -DCMAKE_CUDA_ARCHITECTURES=native -DCOURSE_BUILD_LABS=ON

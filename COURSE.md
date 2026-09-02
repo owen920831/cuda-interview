@@ -20,13 +20,13 @@
 
 ## Week 1：从 execution model 到 reduction
 
-### Day 1 — 环境、测量闭环与 GPU 映射
+### Day 1 — Programming model、GPU 映射与 synchronization
 
-**知识（25 分）**：host/device、kernel launch、grid/block/thread、warp=32、SM、global/shared/register scope；Release 与 `-G` 的区别。
+**知识（35 分）**：读 [CUDA Programming Model](docs/cuda-programming-model.md)：host/device、kernel launch、`threadIdx/blockIdx/blockDim/gridDim`、1D/2D mapping、grid/block/warp/SM、global/shared/register scope；比较 `__syncwarp`、`__syncthreads`、atomic、kernel boundary、`cudaStreamSynchronize` 与 `cudaDeviceSynchronize`。
 
-**实作（70 分）**：运行 `make setup`；读 `src/00_device_info.cu`；画出 100003 个元素如何映射到 256-thread blocks。建立 release build，并运行 `device_info`。
+**实作（65 分）**：运行 `make docker-env && make docker-test`；执行 `programming_model` 并读三个 mapping/synchronization kernels。关掉 reference，完成 `labs/programming_model_lab.cu` 的 1D、2D 与 block-local shared-memory reverse。画出 100003 个元素如何映射到 256-thread blocks。
 
-**验收（25 分）**：在记录中写出 RTX 4080 的 compute capability、SM count、warp size、max threads/block；解释为什么 GPU 可见不代表 `nvcc` 已安装。
+**验收（20 分）**：闭卷写 1D/2D/flatten/lane 公式；解释 barrier 前 partial return 为什么危险、atomic 为什么不是 barrier、不同 blocks 如何分阶段同步。记录 RTX 4080 的 compute capability、SM count、warp size 与 max threads/block。
 
 ### Day 2 — Vector add naive：先把 correctness 做硬
 

@@ -11,6 +11,8 @@
 
 课程已按两个目标岗位逐项映射：[NVIDIA TensorRT-LLM 与 DevTech HPC/AI 对齐表](JOB_ALIGNMENT.md)。共同核心会一起练；最后一个 capstone 分别用 inference-runtime 与 customer-workload 两种角度表达。
 
+如果你正在重新复习 CUDA，不要直接从优化章节开始：先照 [START_HERE.md](START_HERE.md) 完成 `threadIdx/blockIdx/blockDim/gridDim`、1D/2D mapping、warp/block scope 与完整 synchronization lab。
+
 ## 你会真的写出的东西
 
 | 算子 | 自己实现的阶梯 | 主要概念 |

@@ -8,12 +8,14 @@ import sys
 ROOT = Path(__file__).resolve().parents[1]
 
 REQUIRED = [
-    "README.md", "COURSE.md", "CMakeLists.txt", "CMakePresets.json",
+    "README.md", "START_HERE.md", "COURSE.md", "CMakeLists.txt", "CMakePresets.json",
+    "src/00_programming_model.cu", "labs/programming_model_lab.cu",
     "src/01_vector_add.cu", "src/02_reduce.cu", "src/03_transpose.cu",
     "src/04_gemm.cu", "src/05_avg_pool.cu", "src/06_fusion.cu",
     "src/07_streams.cu", "labs/vector_add_lab.cu", "labs/reduce_lab.cu",
     "labs/transpose_lab.cu", "labs/gemm_lab.cu", "labs/avg_pool_lab.cu",
-    "docs/mental-model.md", "docs/visual-guide.md", "docs/profiling.md", "progress/template.md",
+    "docs/mental-model.md", "docs/cuda-programming-model.md",
+    "docs/visual-guide.md", "docs/profiling.md", "progress/template.md",
     "docs/profiling/nsys.md", "docs/profiling/ncu.md",
     "docs/profiling/roofline.md", "docs/profiling/occupancy.md",
     "docs/profiling/source-to-sass.md", "docs/profiling/case-studies.md",
@@ -43,6 +45,7 @@ if course_path.exists():
         errors.append(f"COURSE.md must contain Day 1..21 exactly once; got {days}")
 
 source_contracts = {
+    "src/00_programming_model.cu": ["record_1d", "record_2d", "reverse_within_block"],
     "src/01_vector_add.cu": ["vector_add_v0", "vector_add_v1", "vector_add_float4"],
     "src/02_reduce.cu": ["reduce_v0", "reduce_v1", "reduce_v2", "reduce_v3", "reduce_v4"],
     "src/03_transpose.cu": ["transpose_v0", "transpose_tiled<0>", "transpose_tiled<1>"],
