@@ -1,0 +1,14 @@
+build/
+out/
+*.ncu-rep
+*.nsys-rep
+*.qdrep
+*.sqlite
+*.o
+*.a
+*.so
+*.exe
+.cache/
+__pycache__/
+*.py[cod]
+progress/local-notes.md
