@@ -26,7 +26,7 @@ REQUIRED = [
     "labs/llm-inference/kv_cache_lab.py", "labs/llm-inference/scheduler_lab.py",
     "labs/llm-inference/pytorch_hf_trace.py", "tools/llm_calculator.py",
     "tools/batching_simulator.py", "tools/test_llm_calculator.py",
-    "tools/test_batching_simulator.py",
+    "tools/test_batching_simulator.py", "docs/docker.md", "scripts/docker.sh",
 ]
 
 errors: list[str] = []

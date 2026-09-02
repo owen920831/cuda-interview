@@ -1,4 +1,4 @@
-.PHONY: setup build test test-tools check profile-clean
+.PHONY: setup build test test-tools check profile-clean docker-env docker-build docker-test docker-check docker-shell
 
 setup:
 	./scripts/check_env.sh
@@ -25,3 +25,18 @@ check:
 
 profile-clean:
 	find out -type f \( -name '*.ncu-rep' -o -name '*.nsys-rep' -o -name '*.sqlite' \) -delete 2>/dev/null || true
+
+docker-env:
+	./scripts/docker.sh env
+
+docker-build:
+	./scripts/docker.sh build
+
+docker-test:
+	./scripts/docker.sh test
+
+docker-check:
+	./scripts/docker.sh check
+
+docker-shell:
+	./scripts/docker.sh shell

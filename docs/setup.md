@@ -19,6 +19,8 @@
 
 `nvidia-smi` 可用但 `nvcc` 不存在，表示 Windows GPU 驱动已经透传，但 WSL 内还没有 CUDA Toolkit。安装 Toolkit 时不要在 WSL 里重复安装 Linux GPU driver；依 NVIDIA WSL 指南只安装 toolkit。
 
+如果 Docker GPU passthrough 已经可用，可以不在 WSL host 安装 Toolkit，直接走已验证的 [Docker / NGC 环境](docker.md)。
+
 ## 构建模式
 
 ```bash

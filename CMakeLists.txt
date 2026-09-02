@@ -17,7 +17,7 @@ add_library(course_options INTERFACE)
 target_include_directories(course_options INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/include)
 target_compile_options(course_options INTERFACE
   $<$<COMPILE_LANGUAGE:CXX>:-Wall;-Wextra;-Wpedantic>
-  $<$<COMPILE_LANGUAGE:CUDA>:--lineinfo;--expt-relaxed-constexpr>
+  $<$<COMPILE_LANGUAGE:CUDA>:-lineinfo;--expt-relaxed-constexpr>
 )
 
 function(add_course_app target source)

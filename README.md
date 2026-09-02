@@ -44,6 +44,15 @@ make test
 ./scripts/profile.sh reduce_sum
 ```
 
+Windows + WSL2 推荐直接使用已经验证的 NGC container，不必在 WSL host 安装 CUDA Toolkit：
+
+```bash
+make docker-env
+make docker-test
+```
+
+默认使用本机已有的 `nvcr.io/nvidia/pytorch:25.02-py3`；环境、单一命令、interactive shell 与 profiler 用法见 [Docker / NGC 指南](docs/docker.md)。
+
 若 `CMAKE_CUDA_ARCHITECTURES=native` 在旧工具链不可用，RTX 4080 可显式配置：
 
 ```bash
